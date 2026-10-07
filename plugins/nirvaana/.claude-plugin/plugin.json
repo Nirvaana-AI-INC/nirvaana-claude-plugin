@@ -1,0 +1,13 @@
+{
+  "name": "nirvaana",
+  "version": "1.0.0",
+  "description": "Connects Claude Code to Nirvaana (https://nirvaana.ai/api/mcp): catch up at the start of a session, recall what Nirvaana keeps, and wrap up into your own world. Facts for a shared world wait for your approval.",
+  "author": {
+    "name": "Nirvaana AI, Inc.",
+    "email": "hello@nirvaana.ai",
+    "url": "https://nirvaana.ai"
+  },
+  "homepage": "https://nirvaana.ai/help/connect-claude",
+  "repository": "https://github.com/Nirvaana-AI-INC/nirvaana-claude-plugin",
+  "keywords": ["nirvaana", "memory", "mcp", "worlds", "promises", "team"]
+}

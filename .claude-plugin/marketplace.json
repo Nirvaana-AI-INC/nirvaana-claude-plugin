@@ -1,0 +1,23 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "nirvaana",
+  "description": "Nirvaana for Claude Code: your world, your worlds' facts and your promises, in every session.",
+  "owner": {
+    "name": "Nirvaana AI, Inc.",
+    "email": "hello@nirvaana.ai"
+  },
+  "plugins": [
+    {
+      "name": "nirvaana",
+      "source": "./plugins/nirvaana",
+      "description": "Connects Claude Code to Nirvaana (https://nirvaana.ai/api/mcp): catch up at the start of a session, recall what Nirvaana keeps, and wrap up into your own world. Facts for a shared world wait for your approval.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Nirvaana AI, Inc.",
+        "email": "hello@nirvaana.ai"
+      },
+      "homepage": "https://nirvaana.ai",
+      "category": "productivity"
+    }
+  ]
+}

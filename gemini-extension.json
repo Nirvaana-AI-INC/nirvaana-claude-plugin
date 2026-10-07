@@ -1,0 +1,11 @@
+{
+  "name": "nirvaana",
+  "version": "1.0.0",
+  "description": "Nirvaana in Gemini CLI: your world, your worlds' facts and your promises. Facts for a shared world wait for your approval.",
+  "mcpServers": {
+    "nirvaana": {
+      "httpUrl": "https://nirvaana.ai/api/mcp"
+    }
+  },
+  "contextFileName": "GEMINI.md"
+}
