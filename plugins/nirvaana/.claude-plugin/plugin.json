@@ -1,7 +1,7 @@
 {
   "name": "nirvaana",
-  "version": "1.0.0",
-  "description": "Connects Claude Code to Nirvaana (https://nirvaana.ai/api/mcp): catch up at the start of a session, recall what Nirvaana keeps, and wrap up into your own world. Facts for a shared world wait for your approval.",
+  "version": "1.1.0",
+  "description": "Connects Claude Code to Nirvaana (https://nirvaana.ai/api/mcp), on for your everyday work without saying its name: every session starts caught up, Claude recalls before answering about your work and people, keeps what you decide and promise, and runs your saved automations by name. /catch-up and /wrap-up into your own world. Facts for a shared world wait for your approval.",
   "author": {
     "name": "Nirvaana AI, Inc.",
     "email": "hello@nirvaana.ai",
