@@ -1,0 +1,17 @@
+{
+  "description": "When a session starts, Nirvaana's compact catch-up: late and due promises in full, and what else changed since the last catch-up. Set NIRVAANA_CATCH_UP=off to turn it off.",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|clear",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/catch-up.mjs\"",
+            "timeout": 30
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,34 @@
+name: ci
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Manifests read as JSON
+        run: |
+          for f in .claude-plugin/marketplace.json plugins/nirvaana/.claude-plugin/plugin.json plugins/nirvaana/.mcp.json plugins/nirvaana/hooks/hooks.json gemini-extension.json; do
+            node -e 'JSON.parse(require("fs").readFileSync(process.argv[1], "utf8"))' "$f" && echo "ok $f"
+          done
+      - name: The SessionStart hook
+        run: node --test tests/*.test.mjs
+      - name: claude plugin validate (where Claude Code installs)
+        run: |
+          if npm install -g @anthropic-ai/claude-code >/dev/null 2>&1 && command -v claude >/dev/null; then
+            claude plugin validate .
+            claude plugin validate plugins/nirvaana
+          else
+            echo "Claude Code didn't install here; skipped claude plugin validate."
+          fi
