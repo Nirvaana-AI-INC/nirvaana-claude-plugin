@@ -39,7 +39,7 @@ gemini extensions install https://github.com/Nirvaana-AI-INC/nirvaana-claude-plu
 
 Then run `/mcp auth nirvaana` in Gemini CLI and press Allow.
 
-**Everything at once.** `npx nirvaana setup` in a project folder adds Nirvaana to Claude Code (this plugin), and to Codex and Gemini CLI where they are installed, after asking.
+**Everything at once.** `npx @nirvaana/mcp setup` in a project folder adds Nirvaana to Claude Code (this plugin), and to Codex and Gemini CLI where they are installed, after asking.
 
 The steps, app by app: https://nirvaana.ai/help/connect-claude
 
