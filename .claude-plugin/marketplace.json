@@ -10,8 +10,8 @@
     {
       "name": "nirvaana",
       "source": "./plugins/nirvaana",
-      "description": "Connects Claude Code to Nirvaana (https://nirvaana.ai/api/mcp): catch up at the start of a session, recall what Nirvaana keeps, and wrap up into your own world. Facts for a shared world wait for your approval.",
-      "version": "1.0.0",
+      "description": "Connects Claude Code to Nirvaana (https://nirvaana.ai/api/mcp) and, where the Nirvaana app runs on this Mac, to your own brain in ~/Nirvaana (brain_query, brain_add, brain_files): catch up at the start of a session, recall what Nirvaana keeps, search your own notes and files, and wrap up into your own world. Facts for a shared world wait for your approval.",
+      "version": "1.1.0",
       "author": {
         "name": "Nirvaana AI, Inc.",
         "email": "hello@nirvaana.ai"

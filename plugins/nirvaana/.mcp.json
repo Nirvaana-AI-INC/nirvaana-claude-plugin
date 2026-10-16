@@ -1,1 +1,6 @@
-{"mcpServers":{"nirvaana":{"type":"http","url":"https://nirvaana.ai/api/mcp"}}}
+{
+  "mcpServers": {
+    "nirvaana": { "type": "http", "url": "https://nirvaana.ai/api/mcp" },
+    "brain": { "command": "node", "args": ["${CLAUDE_PLUGIN_ROOT}/bin/brain.mjs"] }
+  }
+}
