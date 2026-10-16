@@ -5,7 +5,7 @@ description: How to use the person's brain on this Mac (the `brain` server: brai
 
 # Your brain, on this Mac
 
-The Nirvaana app keeps the person's own notes and files in `~/Nirvaana` (`brain/` for notes with frontmatter and `[[links]]`, `files/` for everything big, `index/` for the search index it rebuilds itself). The `brain` server reads that index through the app, on this computer only; nothing it returns leaves the Mac unless you send it somewhere. Nirvaana's own server (`nirvaana`) keeps what is shared: facts, promises, worlds, people.
+The Nirvaana app keeps the person's own notes and files in `~/Nirvaana` (`brain/` for notes with frontmatter and `[[links]]`, `files/` for everything big, `index/` for the search index it rebuilds itself). The `brain` server reads that index through the app, on this computer only, while the app is open and signed in; nothing it returns leaves the Mac unless you send it somewhere. It is a small Node script: on a Mac without Node it fails to start and everything else works as before. Nirvaana's own server (`nirvaana`) keeps what is shared: facts, promises, worlds, people.
 
 ## At the start of a session
 1. `catch_me_up` (server `nirvaana`) once: what is late, due or new.

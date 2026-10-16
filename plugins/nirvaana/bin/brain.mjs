@@ -24,16 +24,22 @@ function door() {
   return null;
 }
 
-/** One JSON-RPC message to the app, as the app's brain server takes it: the same shape, over loopback, with the token. */
-async function forward(msg) {
+/**
+ * One JSON-RPC message to the app, as the app's brain server takes it: the same shape, over loopback,
+ * with the token. Null when the app is not there; a status when it refused (a 401 after the app
+ * signed in again is tried once more with the door read afresh).
+ */
+async function forward(msg, again = true) {
   const d = door();
   if (!d) return null;
   const ctl = new AbortController();
   const t = setTimeout(() => ctl.abort(), 20_000);
   try {
     const r = await fetch(`http://127.0.0.1:${d.port}/mcp`, { method: "POST", headers: { "content-type": "application/json", authorization: `Bearer ${d.token}` }, body: JSON.stringify(msg), signal: ctl.signal });
-    if (!r.ok) return null;
-    return await r.json();
+    if (r.status === 401 && again) return forward(msg, false);
+    if (!r.ok) return { refused: r.status };
+    const text = await r.text();
+    return text ? JSON.parse(text) : null;
   } catch {
     return null;
   } finally {
@@ -53,12 +59,17 @@ async function handle(msg) {
   const { id, method, params } = msg;
   if (method === "initialize") return { jsonrpc: "2.0", id, result: { protocolVersion: params?.protocolVersion || "2025-06-18", capabilities: { tools: {} }, serverInfo: { name: "nirvaana-brain", version: "1.1.0" } } };
   if (method === "notifications/initialized" || method === "ping") return id === undefined ? null : { jsonrpc: "2.0", id, result: {} };
-  if (method === "tools/list") return { jsonrpc: "2.0", id, result: { tools: TOOLS } };
+  if (method === "tools/list") {
+    // The app's own list while it is up (so the two never drift); this one when it is not.
+    const live = await forward({ jsonrpc: "2.0", id, method, params });
+    return live && !live.refused && live.result ? live : { jsonrpc: "2.0", id, result: { tools: TOOLS } };
+  }
   if (method === "tools/call") {
     const name = params?.name;
     if (!TOOLS.some((t) => t.name === name)) return { jsonrpc: "2.0", id, error: { code: -32602, message: `No tool called ${String(name)}.` } };
     const answer = await forward({ jsonrpc: "2.0", id, method, params });
     if (!answer) return { jsonrpc: "2.0", id, result: text(NOT_RUNNING) };
+    if (answer.refused) return { jsonrpc: "2.0", id, result: text(`The Nirvaana app refused this (${answer.refused}). Open Nirvaana, sign in, and ask again.`) };
     return answer;
   }
   if (id === undefined) return null;

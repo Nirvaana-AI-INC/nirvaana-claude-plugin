@@ -17,7 +17,7 @@ Or from a terminal:
 claude plugin marketplace add Nirvaana-AI-INC/nirvaana-claude-plugin && claude plugin install nirvaana@nirvaana
 ```
 
-Then type `/mcp`, choose nirvaana, and press Allow in your browser, once. The plugin brings the connector, the guidance Claude follows (the `working-with-nirvaana` and `your-brain` skills), `/wrap-up`, and the `brain` server: with the Nirvaana app running on this Mac, Claude Code can search your own notes and files in `~/Nirvaana` (`brain_query`, `brain_files`) and file a note there (`brain_add`). Nothing of that leaves your computer; without the app the tools say so and the rest works as before.
+Then type `/mcp`, choose nirvaana, and press Allow in your browser, once. The plugin brings the connector, the guidance Claude follows (the `working-with-nirvaana` and `your-brain` skills), `/wrap-up`, and the `brain` server: with the Nirvaana app running and signed in on this Mac, Claude Code can search your own notes and files in `~/Nirvaana` (`brain_query`, `brain_files`) and file a note there (`brain_add`). Nothing of that leaves your computer; without the app the tools say so and the rest works as before. The `brain` server is a small Node script (Node 18 or later; `brew install node` if `/mcp` shows it failed to start); the `nirvaana` server needs nothing.
 
 **Claude on the web, the desktop app, your phone and Cowork.** [Add to Claude](https://claude.ai/customize/connectors?modal=add-custom-connector&connectorName=Nirvaana&connectorUrl=https%3A%2F%2Fnirvaana.ai%2Fapi%2Fmcp): Claude opens with Nirvaana filled in. Press Add, then Allow.
 
